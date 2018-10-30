@@ -1,13 +1,21 @@
+#Imported Files
 import pygame
 import random
 import time
-'''
-print("10x5 Grid")
+
+
+
+#Question 1 10x5 Grid
+print("1) 10x5 Grid")
 for i in range(0,5):
     for j in range(0,10):
         print("*", end=" ")
     print("\n")
-print("Triangle")
+
+
+
+#Question 2 Triangle
+print("2) Triangle")
 for i in range(0,6):
     for j in range(6-i):
         print(" ", end=" ")
@@ -16,8 +24,11 @@ for i in range(0,6):
     for i in range(i, 0, -1):
         print("*", end = " ")
     print("\n")
+
+
+#Question 3 X in the square
+print("3) x in Square")
 distance1=0
-print("x in Square")
 B=int(input("Input base size:"))
 H=int(input("Input Height:"))
 def makeX(B,H):
@@ -39,7 +50,10 @@ def makeX(B,H):
         distance1=distance1+1
         distance2=distance2-1
 makeX(B,H)
-print("Pygame Checker Board")
+
+
+# 4) Pygame Checker Board
+print("4) Pygame Checker Board")
 screen = pygame.display.set_mode((500,500))
 y=110
 running =True
@@ -65,31 +79,32 @@ while running:
         drawn=True
     pygame.display.update()
 pygame.quit()
-'''
-print("Pygame Color Changing Pyrimid")
-screen = pygame.display.set_mode((550,500))
+
+
+# Question 5 Color Changing Pyrimid
+print("5) Pygame Color Changing Pyrimid")
+screen = pygame.display.set_mode((550 ,500))
 r=0
 g=0
 b=0
-color=[r,g,b]
+color=[r ,g ,b]
 y=80
 running=True
 drawn=False
-screen.fill((255,255,255))
+screen.fill((255 ,255 ,255))
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        #if event.type == pygame.KEYDOWN and event.key == pygame.K_w:
     if drawn==True:
         y=80
-        for f in range(0,3):
-            n=random.randint(0,255)
+        for f in range(0 ,3):
+            n=random.randint(0 ,255)
             color[f]=n
-        time.sleep(2)
+        time.sleep(1)
         drawn=False
     while drawn==False:
-        for i in range(0,6):
+        for i in range(0 ,6):
             x=0
             for j in range(6-i):
                 x+=50
@@ -103,4 +118,3 @@ while running:
         drawn=True
     pygame.display.update()
 pygame.quit()
-#'''
