@@ -24,17 +24,21 @@ def move():
     while runtime!=steps and failed!=True:
         if direct==1 and screen.get_at((objxy[0]+1, objxy[1])) != (0 ,0 ,0):
             objxy[0]+=1
+            complete_obstruction=0
         elif direct==2 and screen.get_at((objxy[0], objxy[1]+1)) != (0 ,0 ,0):
             objxy[1]+=1
+            complete_obstruction=0
         elif direct==3 and screen.get_at((objxy[0]-1, objxy[1])) != (0 ,0 ,0):
             objxy[0]=objxy[0]-1
+            complete_obstruction=0
         elif direct==4 and screen.get_at((objxy[0], objxy[1]-1)) != (0 ,0 ,0):
             objxy[1]=objxy[1]-1
+            complete_obstruction=0
         else:
             complete_obstruction+=1
             failed=True
         runtime+=1
-        print(objxy[0:])
+        print(complete_obstruction)
         obj()
         pygame.display.update()
         
@@ -61,7 +65,7 @@ while running:
         steps=random.randint(10 ,50)
         time.sleep(0.1)
         move()
-        if complete_obstruction==5:
+        if complete_obstruction==5 and failed==True:
             enddraw=True
             print("Drawing Complete")
         elif objxy[0]<=0 or objxy[0]>=600 or objxy[1]<=0 or objxy[1]>=600:
