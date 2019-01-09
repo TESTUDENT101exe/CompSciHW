@@ -1,0 +1,51 @@
+import matplotlib.pyplot as plt
+import math
+from random import randint as rand
+population=175
+Male=84
+Female=91
+possible_birth=0.6
+birth_rate=0.3
+starvation_rate_baseline=0.001
+resources=100000
+resource_end=1
+Gender=0.5
+death_rate=0.05
+x_coords = []
+y_coords = []
+
+for i in range(0, 250):
+    if population>0:
+        current_starvation_rate = starvation_rate_baseline * math.log(population,2)*resource_end
+        resources-=population*365*(1+current_starvation_rate)
+    if population>=1000:
+        print("A enraged cult comes along and massacres 300 villigers")
+        population-=300
+    for j in range(0, int(Female*possible_birth)):
+            if j<=birth_rate*100:
+                if rand(0,100)<=Gender*100:
+                    Male+=1
+                else:
+                    Female+=1
+
+    for l in range(0, population):
+        if rand(0,100)<=100*death_rate or rand(0,100)<=100*current_starvation_rate:
+            if rand(0,100)<=Gender*100:
+                Male-=1
+            else:
+                Female-=1
+    population=Male+Female
+    if resources>0:
+        resources+=400*population
+    else:
+        resource_end=100
+
+    x_coords.append(i)
+    y_coords.append(population)
+    print(resources)
+plt.figure()
+plt.plot(x_coords, y_coords)
+plt.xlabel("Years")
+plt.ylabel("Population")
+plt.title('Hopetopia Population')
+plt.show()
